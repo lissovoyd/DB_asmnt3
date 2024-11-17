@@ -20,15 +20,15 @@ SET row_security = off;
 
 --
 -- TOC entry 4934 (class 1262 OID 16429)
--- Name: assignment3; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: assignment3_yjnt; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE assignment3 WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'Russian_Russia.1251';
+CREATE DATABASE assignment3_yjnt WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_US.UTF-8';
 
 
-ALTER DATABASE assignment3 OWNER TO postgres;
+ALTER DATABASE assignment3_yjnt OWNER TO postgres;
 
-\connect assignment3
+\connect assignment3_yjnt
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -742,10 +742,10 @@ ALTER TABLE ONLY asmnt3.specialize
 --
 -- TOC entry 4935 (class 0 OID 0)
 -- Dependencies: 4934
--- Name: DATABASE assignment3; Type: ACL; Schema: -; Owner: postgres
+-- Name: DATABASE assignment3_yjnt; Type: ACL; Schema: -; Owner: postgres
 --
 
-GRANT ALL ON DATABASE assignment3 TO lissovoyd;
+GRANT ALL ON DATABASE assignment3_yjnt TO lissovoyd;
 
 
 --
