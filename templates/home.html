@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Database Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 700px;
+            border-collapse: collapse;
+            margin-bottom: 75px;
+        }
+
+        th, td {
+            border: 1px solid grey;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: lightgrey;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+    <h1>DATABASE</h1>
+    
+    {% for table_name, columns in tables.items() %}
+        <h2>{{ table_name }}</h2>
+        <table onclick="window.location.href='{{ url_for('read_entries', table_name=table_name) }}'">
+            <thead>
+                <tr>
+                    <th></th>
+                    {% for column in columns %}
+                        <th>{{ column.name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Type</td>
+                    {% for column in columns %}
+                        <td>{{ column.type }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Key</td>
+                    {% for column in columns %}
+                        <td style="color: green;font-weight: bold;">
+                            {% if column.primary_key %} Primary Key {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>

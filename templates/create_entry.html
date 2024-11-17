@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+        }
+
+        a {
+            color: rgb(53, 53, 221);
+            text-decoration: none;
+            font-weight: bold;
+            
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>{{ table_name }}</h1>
+
+    <form id="createForm" action="{{ url_for('create_entry', table_name=table_name) }}" method="post">
+        {% for column in columns %}
+            <label for="{{ column }}">{{ column }}:</label>
+            <input type="text" id="{{ column }}" name="{{ column }}"><br>
+        {% endfor %}
+    </form>
+
+    <a href="#" class="submit-link" onclick="document.getElementById('createForm').submit();">Create</a>
+    <h1></h1>
+    <a href="{{ url_for('read_entries', table_name=table_name) }}" style="color: darkblue;">Back to {{ table_name }}</a>
+    
+</body>
+</html>
