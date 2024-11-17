@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>{{ table_name }} Table</title>
     <style>
@@ -47,33 +48,36 @@
 <body>
     <h1>{{ table_name }}</h1>
 
-    <a style="color: darkblue;" href="{{ url_for('home') }}">Back to Home</a>
+    <a style="color: darkblue;" href="{{ url_for('main') }}">Back to Home</a>
     <h1></h1>
-    <a href="{{ url_for('create_entry', table_name=table_name) }}">Create</a>
+    <a href="{{ url_for('create', table_name=table_name) }}">Create</a>
    
 
-    <div class="table-container">
-        <table>
+  
+    <table>
+        <tr>
+            {% for column in columns %}
+                <th>{{ column }}</th>
+            {% endfor %}
+            <th>Option</th>
+        </tr>
+        
+        
+
+        {% for row in rows %}
             <tr>
                 {% for column in columns %}
-                    <th>{{ column }}</th>
+                    <td>{{ row[column] }}</td>
                 {% endfor %}
-                <th>Option</th>
+                <td>
+                    <a style="color: lightcoral;">Update</a>
+                    <a href="{{ url_for('delete', table_name=table_name, pk=row[columns[0]]) }}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
             </tr>
-            
-            
-            {% for row in rows %}
-                <tr>
-                    {% for column in columns %}
-                        <td>{{ row[column] }}</td>
-                    {% endfor %}
-                    <td>
-                        <a style="color: lightcoral;">Update</a>
-                        <a href="{{ url_for('delete_entry', table_name=table_name, pk=row[columns[0]]) }}" onclick="return confirm('Are you sure?');">Delete</a>
-                    </td>
-                </tr>
-            {% endfor %}  
-        </table>
-    </div>
+        {% endfor %}  
+
+
+    </table>
+
 </body>
 </html>

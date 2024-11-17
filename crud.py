@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db_model import db
-import os
+from db_schema import db
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+pg8000://postgres:12345@localhost/assignment3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
